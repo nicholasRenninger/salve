@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "salve"
+version = "0.1.0"
+description = "hope this doesn't suck"
+authors = ["Nicholas Renninger <nrenninger@mitre.org>"]
+license = "Apache 2.0"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.8,<3.11"
+tensorflow = "^2.11.0"
+keras-cv = "^0.3.4"
+tensorflow-datasets = "^4.7.0"
+matplotlib = "^3.6.2"
+jax = {extras = ["cuda"], version = "^0.3.25"}
+plotly = "^5.11.0"
+pandas = "^1.5.2"
+ipykernel = "^6.19.2"
+nbformat = "^5.7.0"
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.16.1"
+flake8 = "^5.0.4"
+black = "^22.10.0"
+
+
+[[tool.poetry.source]]
+name = "jax"
+url = "https://storage.googleapis.com/jax-releases/jax_cuda_releases.html"
+default = false
+secondary = false
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
