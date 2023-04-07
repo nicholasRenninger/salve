@@ -100,6 +100,8 @@ The two methodologies were developed in two separate modules:
 
 ### Potential-based safety filter
 
+*The inspiration to do this came from the [`img2img` interpolation keras-cv example](https://keras.io/examples/generative/random_walks_with_stable_diffusion/)*
+
 Getting the potential-based safety filter to work at all requires tuning many things, most importantly:
 
 - the potential function generation parameters as specified in `salve.UConfig`. In particular, the method didn't work until I implemented cosine distance and experimented with obstacle radii and potential strength.
