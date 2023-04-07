@@ -30,8 +30,26 @@ I am also interested in how formal methodologies could be applied to the more ge
 
 ## Results
 
-Results are somewhat "cherry-picked" and limited in the sense that diffusion-based image generation is tricky to get right in the first place. I am by no means a prompting expert and tuning parameters to get even reasonable starting images was tricky.
+See:
+[`black_box_SD_safety_comparison.ipynb`](https://github.com/nicholasRenninger/salve/blob/main/black_box_SD_safety_comparison.ipynb)
 
+Results are somewhat "cherry-picked" and limited in the sense that diffusion-based image generation is tricky to get right in the first place. I am by no means a prompting expert and tuning parameters to get even reasonable starting images was tricky. The two compared methods are not quite equivalent, but could be used to similar effects.
+
+### Potential-based Safety Filtering
+
+![potentialBased-safety-filter](blue_striped_cat-potential_based_path_2.gif)
+
+Here, the user's **start prompt to SD**: `white fluffy cat laying on the floor`, and wants to see an `img2img` interpolation to the **goal prompt**: `blue striped cat sitting in a box`. The API/model developer in the background has implemented a "safety" filter with the following "negative" prompts:
+- `blue striped animal sitting on the ground`
+- `cute tabby cat on the ground`
+
+As humans, we would expect that the goal image output should be a cat, which is not blue or striped, sitting in some sort of box. As can be seen in the image interpolation output, this is approximately what we get. This method is brittle and unstable, but can work well. We see we can compose many different, general safety filters together and still get cogent output.
+
+### Negative Prompting
+
+![negative-prompting-example](blue_striped_cat_negative_prompting.png)
+
+Here we do direct negative prompting directly on the **goal prompt's image** with a simple negative prompt of: `blue stripes, blue`. We get more or less what we were looking for, hooray! The quality of the result is a bit more poor than that of the potential-based filter, but that is likely variable and largely a result of (+/-) prompt engineering.
 
 ## Conclusion
 
